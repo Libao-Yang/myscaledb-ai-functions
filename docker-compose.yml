@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  myscaledb:
+    image: myscale/myscaledb:1.8.0
+    container_name: myscaledb
+    restart: always
+    ports:
+      - '8123:8123'
+      - '9000:9000'
+    volumes:
+      - ./custom_config.xml:/etc/clickhouse-server/config.d/custom_config.xml
+      - ./custom_users_config.xml:/etc/clickhouse-server/users.d/custom_users_config.xml
+      - ./user_scripts:/var/lib/clickhouse/user_scripts
+      - ./functions.xml:/var/lib/clickhouse/udf_configs/functions.xml
