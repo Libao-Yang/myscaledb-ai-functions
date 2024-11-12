@@ -37,6 +37,15 @@ SELECT EmbedText(concat('inputs: ', 'What is Deep Learning?'), 'HuggingFace', 'h
 
 # MyScaleDB RAG with Ollama
 
+> 本 repo 为支持 Ollama 新增/扩展了几个 UDF：
+```sql
+SELECT EmbedText('test', 'Ollama', 'http://10.1.2.118:11434/api/embed', 'hf_key', '{"model": "all-minilm"}');
+
+SELECT chat_ollama('http://10.2.2.144:11434', 'qwen2.5:1.5b', 'Hello');
+
+SELECT split_text(2000, 'longlong text ...');
+```
+
 ## 1. 创建 doc_table
 
 ```sql
