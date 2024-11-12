@@ -76,7 +76,7 @@
         <max_command_execution_time>10000000</max_command_execution_time>
     </function>
     <function>
-        <type>executable</type>
+        <type>executable_pool</type>
         <name>chat_ollama</name>
         <return_type>String</return_type>
         <return_name>result_name</return_name>
@@ -94,6 +94,26 @@
         </argument>
         <format>JSONEachRow</format>
         <command>chat_ollama</command>
+        <stderr_reaction>throw</stderr_reaction>
+        <command_read_timeout>10000000</command_read_timeout>
+        <command_write_timeout>10000000</command_write_timeout>
+        <max_command_execution_time>10000000</max_command_execution_time>
+    </function>
+    <function>
+        <type>executable_pool</type>
+        <name>split_text</name>
+        <return_type>Array(Tuple(UInt32, String))</return_type>
+        <return_name>result_name</return_name>
+        <argument>
+            <type>UInt32</type>
+            <name>max_length</name>
+        </argument>
+        <argument>
+            <type>String</type>
+            <name>text</name>
+        </argument>
+        <format>JSONEachRow</format>
+        <command>split_text</command>
         <stderr_reaction>throw</stderr_reaction>
         <command_read_timeout>10000000</command_read_timeout>
         <command_write_timeout>10000000</command_write_timeout>
